@@ -85,6 +85,8 @@ public class ArraySum41 {
 
     public static void main(String[] args) {
         ArraySum41 tool = new ArraySum41();
+        int num[] = {4,7,9,10,11,15};
+        tool.getTwoNumSumK(num,17);
         tool.testSubArraySum();
     }
 }

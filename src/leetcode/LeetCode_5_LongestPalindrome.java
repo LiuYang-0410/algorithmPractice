@@ -39,12 +39,47 @@ public class LeetCode_5_LongestPalindrome {
         return right - left-1;
     }
 
+    /**
+     * 采用Manacher算法,令最长回文子串为奇偶的情况可以统一考虑
+     * @param s 给定输入字符串
+     * @return  最长回文子串
+     */
+    public String Manacher(String s){   //14ms
+        char template[] = new char[s.length()*2+2];
+        template[0]='$';
+        template[1]='#';
+        for (int i = 0,j=2; i < s.length(); i++,j+=2) {
+            template[j] = s.charAt(i);
+            template[j+1] = '#';
+        }
+        int p[] = new int[template.length];
+        int id = 0,mx = 0;
+        for (int i = 1; i < p.length; i++) {
+            if (mx > i)
+                p[i] = Math.min(p[2*id-i],mx-i);
+            else
+                p[i] = 1;
+            while (i+p[i] < p.length && i-p[i] >= 0 && template[i-p[i]] == template[i+p[i]])
+                p[i]++;
+            if (p[i] > p[id]){
+                id = i;
+                mx = id + p[id];
+            }
+        }
+        return s.substring((id-p[id])/2,(id+p[id])/2-1);
+    }
+
     public static void main(String[] args) {
         LeetCode_5_LongestPalindrome tool = new LeetCode_5_LongestPalindrome();
         System.out.println(tool.longestPalindrome("1233454330"));
+        System.out.println(tool.Manacher("1233454330"));
         System.out.println(tool.longestPalindrome("ccc"));
+        System.out.println(tool.Manacher("ccc"));
         System.out.println(tool.longestPalindrome("aaaa"));
+        System.out.println(tool.Manacher("aaaa"));
         System.out.println(tool.longestPalindrome("aaaaa"));
+        System.out.println(tool.Manacher("aaaaa"));
         System.out.println(tool.longestPalindrome("iptmykvjanwiihepqhzupneckpzomgvzmyoybzfynybpfybngttozprjbupciuinpzryritfmyxyppxigitnemanreexcpwscvcwddnfjswgprabdggbgcillisyoskdodzlpbltefiz"));
+        System.out.println(tool.Manacher("iptmykvjanwiihepqhzupneckpzomgvzmyoybzfynybpfybngttozprjbupciuinpzryritfmyxyppxigitnemanreexcpwscvcwddnfjswgprabdggbgcillisyoskdodzlpbltefiz"));
     }
 }
