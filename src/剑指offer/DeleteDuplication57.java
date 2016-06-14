@@ -14,7 +14,7 @@ public class DeleteDuplication57 {
     public void  deleteDuplicateNode(ListNode head){
         ListNode curNode = head,preNode = new ListNode(-1,head);
         while (curNode != null && curNode.next != null){
-            if (curNode.value == curNode.next.value){//是重复节点
+            if (curNode.val == curNode.next.val){//是重复节点
                 preNode.next = curNode.next.next;
                 curNode = preNode.next;
             }else{

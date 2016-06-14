@@ -20,11 +20,11 @@ public class LeetCode_2_AddTwoNumbers {
         while (node1 != null || node2 != null || carry){
             int value = 0;
             if (node1 != null){
-                value += node1.value;
+                value += node1.val;
                 node1 = node1.next;
             }
             if (node2 != null){
-                value += node2.value;
+                value += node2.val;
                 node2 = node2.next;
             }
             if (carry)

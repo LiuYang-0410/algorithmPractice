@@ -28,14 +28,14 @@ public class JosephuseCycle45 {
             if (count++ != m){
                 curNode = curNode.next;
             }else {
-                curNode.value = curNode.next.value;
+                curNode.val = curNode.next.val;
                 curNode.next = curNode.next.next;
                 if (curNode.next == curNode)
                     curNode.next = null;
                 count = 1;
             }
         }
-        return curNode.value;
+        return curNode.val;
     }
 
     public static void main(String[] args) {

@@ -42,22 +42,42 @@ public class LeetCode_14_CommonPrefix {
         return strs[0].substring(0,prefixEnd);
     }
 
+    public String longestCommonPrefix3(String[] strs){  //1ms
+        if (strs.length == 0)
+            return "";
+        if (strs.length == 1)
+            return strs[0];
+        int shortest = 0;
+        for (int i = 1; i < strs.length; i++) //找出最短的字符串
+            if (strs[i].length() < strs[shortest].length())
+                shortest = i;
+        StringBuffer out = new StringBuffer(strs[shortest]);
+        for (String str : strs) {
+            while (str.indexOf(out.toString()) != 0)
+                out.deleteCharAt(out.length()-1);
+        }
+        return out.toString();
+    }
+
     public static void main(String[] args) {
         LeetCode_14_CommonPrefix commonPrefix = new LeetCode_14_CommonPrefix();
         {
             String input[] = {"acdvtbg","acdvbthbw","acdghtwb","acdv"};
             System.out.println(commonPrefix.longestCommonPrefix(input));
             System.out.println(commonPrefix.longestCommonPrefix2(input));
+            System.out.println(commonPrefix.longestCommonPrefix3(input));
         }
         {
             String input[] = {};
             System.out.println(commonPrefix.longestCommonPrefix(input));
             System.out.println(commonPrefix.longestCommonPrefix2(input));
+            System.out.println(commonPrefix.longestCommonPrefix3(input));
         }
         {
             String input[] = {"abd","","sscf"};
             System.out.println(commonPrefix.longestCommonPrefix(input));
             System.out.println(commonPrefix.longestCommonPrefix2(input));
+            System.out.println(commonPrefix.longestCommonPrefix3(input));
         }
     }
 }
