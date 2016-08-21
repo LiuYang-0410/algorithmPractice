@@ -1,4 +1,4 @@
-package leetcode;
+package base;
 
 /**
  * Created by liuyang on 16/5/2.
@@ -14,4 +14,9 @@ public class PrintSolution {
             System.out.print(num+"\t");
         System.out.println();
     }
+    public static void printArray(int array[], String prefix){
+        System.out.print(prefix+ "\t");
+        printArray(array);
+    }
+
 }

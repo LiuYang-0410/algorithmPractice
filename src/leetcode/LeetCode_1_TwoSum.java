@@ -1,5 +1,7 @@
 package leetcode;
 
+import base.PrintSolution;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
