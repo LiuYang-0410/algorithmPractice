@@ -35,7 +35,7 @@ public class RegMatch53 {
             return helper(original,strIndex+1,reg,regIndex+1);
         }
         if (reg[regIndex] == original[strIndex] && helper(original,strIndex+1,reg,regIndex))
-            return true;    //* 出现任意次
+            return true;    //* 出现任意次 
         return helper(original,strIndex,reg,regIndex+2);    //*出现0次
     }
 
