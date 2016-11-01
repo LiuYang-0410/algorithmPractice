@@ -1,7 +1,5 @@
 package leetcode;
 
-import com.sun.org.apache.bcel.internal.generic.LUSHR;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

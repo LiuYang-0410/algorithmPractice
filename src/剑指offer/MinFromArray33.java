@@ -33,7 +33,7 @@ public class MinFromArray33 {
             return;
         int pivotIndex = beginIndex;
         for (int i = beginIndex+1;i <= endIndex;i++)
-            if (compare(str[i],str[beginIndex])){
+            if (compare(str[i],str[pivotIndex])){
                 String copy = str[i];
                 str[i] = str[pivotIndex+1];
                 str[pivotIndex+1] = str[pivotIndex];
@@ -75,17 +75,5 @@ public class MinFromArray33 {
             System.out.println("形成的最小数:\t"+tool.findMinNumber(num));
         }
     }
-
-}
-
-class A {
-//    static  int top = 10;
-
-    int aha;
-    public void lala(){
-//        int top = 5;
-        System.out.println(this.aha);
-    }
-
 
 }

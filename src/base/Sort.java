@@ -231,6 +231,17 @@ public class Sort {
         double d = Math.random();
         return (int)(d * (endIndex-beginIndex)+beginIndex);
     }
+    
+    public int[] countSort(int num[], int k) {
+		int temp[] = new int[num.length], count[] = new int[k+1];
+		for (int i : num) 
+			count[i]++;
+		for (int i = 1; i < count.length; i++) 
+			count[i] += count[i-1];
+		for (int i = num.length-1; i >= 0; i--) 
+			temp[count[num[i]]-- -1] = num[i];
+		return temp;
+	}
 
     public void printNum(int num[]){
         for (int i : num)
@@ -294,6 +305,12 @@ public class Sort {
             int num[] = {16,4,10,14,7,9,3,2,8,1};
             sort.quickSort(num);
             sort.printNum(num);
+        }
+        {
+            System.out.println("计数排序");
+            int num[] = {2,5,3,0,2,3,0,3};
+            int ans[] = sort.countSort(num, 5);
+            sort.printNum(ans);
         }
     }
 }
